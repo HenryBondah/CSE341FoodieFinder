@@ -9,6 +9,8 @@ const doc = {
   // schemes: ['http'],
   host: 'cse341foodiefinder.onrender.com',
   schemes: ['https'],
+
+  
   paths: {
     "/api/users": {
       "post": {
