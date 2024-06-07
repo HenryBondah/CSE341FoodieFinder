@@ -5,8 +5,10 @@ const doc = {
     title: 'CSE341FoodieFinder API',
     description: 'API for Food Recommendation App',
   },
-  host: 'localhost:8080',
-  schemes: ['http'],
+  // host: 'localhost:8080',
+  // schemes: ['http'],
+  host: 'cse341foodiefinder.onrender.com',
+  schemes: ['https'],
   paths: {
     "/api/users": {
       "post": {

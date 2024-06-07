@@ -5,7 +5,7 @@
     "description": "API for Food Recommendation App",
     "version": "1.0.0"
   },
-  "host": "localhost:8080",
+  "host": "cse341foodiefinder.onrender.com",
   "basePath": "/",
   "schemes": [
     "http"
