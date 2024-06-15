@@ -18,6 +18,7 @@ const typeDefs = gql`
   type User {
     id: ID!
     username: String!
+    email: String!
     location: String!
     foodPreferences: [String]
   }
@@ -34,8 +35,8 @@ const typeDefs = gql`
     updateFood(id: ID!, name: String, price: Float, discount: Float, location: String, category: String, vendor: String): Food
     deleteFood(id: ID!): String
 
-    createUser(username: String!, location: String!, foodPreferences: [String]!): User
-    updateUser(id: ID!, username: String, location: String, foodPreferences: [String]): User
+    createUser(username: String!, email: String!, password: String!, location: String!, foodPreferences: [String]!): User
+    updateUser(id: ID!, username: String, email: String, password: String, location: String, foodPreferences: [String]): User
     deleteUser(id: ID!): String
   }
 `;

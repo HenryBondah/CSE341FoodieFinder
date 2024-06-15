@@ -1,19 +1,17 @@
 [
-    {
-      "username": "john_doe",
-      "location": "New York",
-      "foodPreferences": ["Pizza", "Burger"]
-    },
-    {
-      "username": "jane_doe",
-      "location": "Chicago",
-      "foodPreferences": ["Sushi"]
-    },
-    {
-      "username": "sam_smith",
-      "location": "San Francisco",
-      "foodPreferences": ["Pizza", "Sushi"]
-    }
-  ]
-
-  
+  {
+    "username": "john_doe",
+    "location": "New York",
+    "foodPreferences": ["Pizza", "Burger"]
+  },
+  {
+    "username": "jane_doe",
+    "location": "Chicago",
+    "foodPreferences": ["Sushi"]
+  },
+  {
+    "username": "sam_smith",
+    "location": "San Francisco",
+    "foodPreferences": ["Pizza", "Sushi"]
+  }
+]

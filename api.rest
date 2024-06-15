@@ -1,0 +1,55 @@
+### Get all users
+GET http://localhost:8080/api/users
+
+### Create a new user
+POST http://localhost:8080/api/users
+Content-Type: application/json
+
+{
+  "username": "test_user",
+  "email": "test_user@example.com",
+  "location": "New York",
+  "foodPreferences": ["Pizza", "Burger"]
+}
+
+### Update a user
+PUT http://localhost:8080/api/users/{6660d2b5daed0f1b4a1d2382}
+Content-Type: application/json
+
+{
+  "username": "updated_user",
+  "email": "updated_user@example.com",
+  "location": "Los Angeles",
+  "foodPreferences": ["Sushi"]
+}
+
+### Delete a user
+DELETE http://localhost:8080/api/users/{id}
+
+### Get all foods
+GET http://localhost:8080/api/foods
+
+### Create a new food
+POST http://localhost:8080/api/foods
+Content-Type: application/json
+
+{
+  "name": "Pizza",
+  "price": 10.99,
+  "discount": 2,
+  "location": "New York",
+  "category": "Fast Food",
+  "vendor": "Pizza Hut"
+}
+
+### Update a food
+PUT http://localhost:8080/api/foods/{id}
+Content-Type: application/json
+
+{
+  "name": "Updated Pizza",
+  "price": 12.99
+}
+
+### Delete a food
+DELETE http://localhost:8080/api/foods/{id}

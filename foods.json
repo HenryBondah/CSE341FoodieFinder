@@ -1,33 +1,32 @@
 [
-    {
-      "name": "Pizza",
-      "price": 10.99,
-      "discount": 2,
-      "location": "New York",
-      "category": "Fast Food",
-      "vendor": "Pizza Hut",
-      "available": true,
-      "createdAt": "2024-06-05T00:00:00Z"
-    },
-    {
-      "name": "Burger",
-      "price": 8.99,
-      "discount": 1,
-      "location": "Chicago",
-      "category": "Fast Food",
-      "vendor": "McDonalds",
-      "available": true,
-      "createdAt": "2024-06-05T00:00:00Z"
-    },
-    {
-      "name": "Sushi",
-      "price": 12.99,
-      "discount": 0,
-      "location": "San Francisco",
-      "category": "Seafood",
-      "vendor": "Sushi Place",
-      "available": true,
-      "createdAt": "2024-06-05T00:00:00Z"
-    }
-  ]
-  
+  {
+    "name": "Pizza",
+    "price": 10.99,
+    "discount": 2,
+    "location": "New York",
+    "category": "Fast Food",
+    "vendor": "Pizza Hut",
+    "available": true,
+    "createdAt": "2024-06-05T00:00:00Z"
+  },
+  {
+    "name": "Burger",
+    "price": 8.99,
+    "discount": 1,
+    "location": "Chicago",
+    "category": "Fast Food",
+    "vendor": "McDonalds",
+    "available": true,
+    "createdAt": "2024-06-05T00:00:00Z"
+  },
+  {
+    "name": "Sushi",
+    "price": 12.99,
+    "discount": 0,
+    "location": "San Francisco",
+    "category": "Seafood",
+    "vendor": "Sushi Place",
+    "available": true,
+    "createdAt": "2024-06-05T00:00:00Z"
+  }
+]
