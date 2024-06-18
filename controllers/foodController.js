@@ -50,7 +50,7 @@ exports.updateFood = [
       if (!updatedFood) {
         return res.status(404).json({ message: 'Food not found' });
       }
-      res.status(200).json(updatedFood); // Change 204 to 200
+      res.status(200).json(updatedFood);
     } catch (err) {
       res.status(500).json({ message: err.message });
     }

@@ -1,26 +1,52 @@
 const express = require('express');
-const cors = require('cors');
+const passport = require('passport');
+const session = require('express-session');
+const mongoose = require('mongoose');
+require('dotenv').config(); // Load environment variables at the top
+require('./config/passport');
 const connectDB = require('./db/db');
 const swaggerUi = require('swagger-ui-express');
 const swaggerDocument = require('./swagger-output.json');
-require('dotenv').config();
+
+const authRoutes = require('./routes/authRoutes');
+const userRoutes = require('./routes/userRoutes');
+const foodRoutes = require('./routes/foodRoutes');
+const { ApolloServer } = require('apollo-server-express');
+const { typeDefs, resolvers } = require('./graphql/schema');
 
 const app = express();
 
-// Connect to database
-connectDB();
-
 // Middleware
-app.use(cors()); // Enable CORS
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Routes
-app.use('/api/users', require('./routes/userRoutes'));
-app.use('/api/foods', require('./routes/foodRoutes'));
+app.use('/auth', authRoutes);
+app.use('/api/users', userRoutes);
+app.use('/api/foods', foodRoutes);
 
-// Swagger setup
+// Serve Swagger UI
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
-// Start server
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+// Connect to MongoDB and start the server
+connectDB().then(async () => {
+  const server = new ApolloServer({ typeDefs, resolvers });
+  await server.start(); // Ensure the server is started before applying middleware
+  server.applyMiddleware({ app });
+
+  const PORT = process.env.PORT || 8080;
+  app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+}).catch(err => {
+  console.error('Failed to connect to MongoDB', err);
+});

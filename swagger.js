@@ -6,10 +6,10 @@ const doc = {
     description: 'API for Food Recommendation App',
   },
   host: process.env.NODE_ENV === 'production' ? 'cse341foodiefinder.onrender.com' : 'localhost:8080',
-  schemes: ['https', 'http']
+  schemes: ['https', 'http'],
 };
 
 const outputFile = './swagger-output.json';
-const endpointsFiles = ['./routes/userRoutes.js', './routes/foodRoutes.js'];
+const endpointsFiles = ['./routes/userRoutes.js', './routes/foodRoutes.js', './routes/authRoutes.js'];
 
 swaggerAutogen(outputFile, endpointsFiles, doc);

@@ -1,3 +1,12 @@
+### Google OAuth Authentication
+GET http://localhost:8080/auth/google
+
+### Google OAuth Callback
+GET http://localhost:8080/auth/google/callback
+
+### Logout
+GET http://localhost:8080/auth/logout
+
 ### Get all users
 GET http://localhost:8080/api/users
 
@@ -8,12 +17,13 @@ Content-Type: application/json
 {
   "username": "test_user",
   "email": "test_user@example.com",
+  "password": "test_password",
   "location": "New York",
   "foodPreferences": ["Pizza", "Burger"]
 }
 
 ### Update a user
-PUT http://localhost:8080/api/users/{6660d2b5daed0f1b4a1d2382}
+PUT http://localhost:8080/api/users/{id}
 Content-Type: application/json
 
 {
@@ -53,3 +63,6 @@ Content-Type: application/json
 
 ### Delete a food
 DELETE http://localhost:8080/api/foods/{id}
+
+### Get user profile (authenticated)
+GET http://localhost:8080/api/users/profile
