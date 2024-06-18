@@ -20,10 +20,9 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: '/auth/google/callback',
+      callbackURL: 'https://cse341foodiefinder.onrender.com/auth/google/callback', // Ensure this matches the redirect URI in Google Cloud Console
     },
     async (accessToken, refreshToken, profile, done) => {
-      console.log('Google strategy called');
       try {
         let user = await User.findOne({ googleId: profile.id });
 
@@ -39,10 +38,8 @@ passport.use(
           await user.save();
         }
 
-        console.log('User authenticated:', user);
         done(null, user);
       } catch (err) {
-        console.error('Error in Google strategy:', err);
         done(err, null);
       }
     }
