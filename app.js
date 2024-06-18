@@ -51,6 +51,12 @@ const ensureAuthenticated = (req, res, next) => {
 // Serve Swagger UI
 app.use('/api-docs', ensureAuthenticated, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
+// Verify environment variables
+console.log("MONGO_URI:", process.env.MONGO_URI);
+console.log("GOOGLE_CLIENT_ID:", process.env.GOOGLE_CLIENT_ID);
+console.log("GOOGLE_CLIENT_SECRET:", process.env.GOOGLE_CLIENT_SECRET);
+console.log("SESSION_SECRET:", process.env.SESSION_SECRET);
+
 // Connect to MongoDB and start the server
 connectDB().then(async () => {
   const server = new ApolloServer({ typeDefs, resolvers });
