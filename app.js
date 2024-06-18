@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 const session = require('express-session');
 const mongoose = require('mongoose');
-require('dotenv').config(); // Load environment variables at the top
+require('dotenv').config();
 require('./config/passport');
 const connectDB = require('./db/db');
 const swaggerUi = require('swagger-ui-express');
@@ -29,13 +29,27 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next) => {
+  console.log('Session:', req.session);
+  console.log('User:', req.user);
+  next();
+});
+
 // Routes
 app.use('/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/foods', foodRoutes);
 
+// Middleware to protect routes
+const ensureAuthenticated = (req, res, next) => {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect('/auth/login');
+};
+
 // Serve Swagger UI
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api-docs', ensureAuthenticated, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // Connect to MongoDB and start the server
 connectDB().then(async () => {

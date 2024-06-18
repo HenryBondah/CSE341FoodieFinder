@@ -23,6 +23,7 @@ passport.use(
       callbackURL: '/auth/google/callback',
     },
     async (accessToken, refreshToken, profile, done) => {
+      console.log('Google strategy called');
       try {
         let user = await User.findOne({ googleId: profile.id });
 
@@ -38,8 +39,10 @@ passport.use(
           await user.save();
         }
 
+        console.log('User authenticated:', user);
         done(null, user);
       } catch (err) {
+        console.error('Error in Google strategy:', err);
         done(err, null);
       }
     }
